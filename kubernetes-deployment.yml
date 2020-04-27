@@ -13,6 +13,7 @@ spec:
   selector:
     matchLabels:
       app: pythonapp
+      commit: ${WERCKER_GIT_COMMIT}
   template:
     metadata:
       labels:
@@ -24,7 +25,7 @@ spec:
         image: ${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
         ports:
         - name: pythonapp-server
-          containerPort: 8080
+          containerPort: 5000
           protocol: TCP
       imagePullSecrets:
       - name:  ${OKE_IMAGESECRET}
