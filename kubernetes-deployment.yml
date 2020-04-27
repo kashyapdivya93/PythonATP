@@ -2,24 +2,24 @@
 # and the .template extension removed by the bash-template Wercker step.
 # See wercker.yml.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: pythonapp
-  labels:
-    app: pythonapp
-    commit: ${WERCKER_GIT_COMMIT}
+  #labels:
+  #  app: pythonapp
+  #  commit: ${WERCKER_GIT_COMMIT}
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: pythonapp
-      commit: ${WERCKER_GIT_COMMIT}
+  #    commit: ${WERCKER_GIT_COMMIT}
   template:
     metadata:
       labels:
         app: pythonapp
-        commit: ${WERCKER_GIT_COMMIT}
+  #     commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
       - name: pythonapp-server
@@ -40,14 +40,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pythonapp
-  labels:
-    app: pythonapp
-    commit: ${WERCKER_GIT_COMMIT}
+  #labels:
+  #  app: pythonapp
+  #  commit: ${WERCKER_GIT_COMMIT}
 spec:
   ports:
   - port: 80
-    targetPort: 8080
+    targetPort: 5000
   selector:
     app: pythonapp
-    commit: ${WERCKER_GIT_COMMIT}
+  #  commit: ${WERCKER_GIT_COMMIT}
   type: LoadBalancer
