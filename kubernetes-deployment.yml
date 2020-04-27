@@ -22,10 +22,10 @@ spec:
   #     commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
-      - name: pythonapp-server
+      - name: app-server
         image: ${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
         ports:
-        - name: pythonapp-server
+        - name: app-server
           containerPort: 5000
           protocol: TCP
       imagePullSecrets:
