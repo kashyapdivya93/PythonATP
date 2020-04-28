@@ -23,13 +23,13 @@ spec:
     spec:
       containers:
       - name: app-server
-        image: ${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
+        image: $DOCKER_REPO:$WERCKER_GIT_COMMIT
         ports:
         - name: app-server
           containerPort: 5000
           protocol: TCP
       imagePullSecrets:
-      - name:  ${OKE_IMAGESECRET}
+      - name: $OKE_IMAGESECRET
 
 ---
 # This template file will have its environment variables expanded
