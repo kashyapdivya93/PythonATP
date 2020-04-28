@@ -1,29 +1,23 @@
-# This template file will have its environment variables expanded
-# and the .template extension removed by the bash-template Wercker step.
-# See wercker.yml.
+###maintained by Divya Kashyap
+###yaml file to deploy python app onto OKE with ATP integration
 
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: pythonapp
-  #labels:
-  #  app: pythonapp
-  #  commit: ${WERCKER_GIT_COMMIT}
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: pythonapp
-  #    commit: ${WERCKER_GIT_COMMIT}
   template:
     metadata:
       labels:
         app: pythonapp
-  #      commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
       - name: app-server
-        image: $DOCKER_REPO:$WERCKER_GIT_COMMIT
+        image: $DOCKER_REPO:$BUILD_NUMBER
         ports:
         - name: app-server
           containerPort: 5000
@@ -32,17 +26,10 @@ spec:
       - name: $OKE_IMAGESECRET
 
 ---
-# This template file will have its environment variables expanded
-# and the .template extension removed by the bash-template Wercker step.
-# See wercker.yml.
-
 apiVersion: v1
 kind: Service
 metadata:
   name: pythonapp
-  #labels:
-  #  app: pythonapp
-  #  commit: ${WERCKER_GIT_COMMIT}
 spec:
   ports:
   - port: 80
