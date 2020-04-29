@@ -9,7 +9,7 @@ app.config["DEBUG"] = True
 password = 'ABKK_tt_33ABKG_tt_33'
 username = 'admin'
 
-connection = cx_Oracle.connect(username,password,'simfoodsatp_high')
+connection = cx_Oracle.connect(username,password,'archrockdemo_high')
 connection.autocommit = True
 cur = connection.cursor()
 
