@@ -16,7 +16,7 @@ cur = connection.cursor()
 @app.route('/test_flask', methods=['GET'])
 def test_flask():
     result_array = []
-    query_all = """select * from dual"""
+    query_all = """select * from archrock"""
     cur.execute(query_all)
     result = cur.fetchall()
     for i in result:
