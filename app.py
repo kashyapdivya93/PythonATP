@@ -9,14 +9,14 @@ app.config["DEBUG"] = True
 password = 'ABKK_tt_33ABKG_tt_33'
 username = 'admin'
 
-connection = cx_Oracle.connect(username,password,'archrockdemo_high')
+connection = cx_Oracle.connect(username,password,'devops_high')
 connection.autocommit = True
 cur = connection.cursor()
 
 @app.route('/test_flask', methods=['GET'])
 def test_flask():
     result_array = []
-    query_all = """select * from archrock"""
+    query_all = """select * from devops"""
     cur.execute(query_all)
     result = cur.fetchall()
     for i in result:
