@@ -16,16 +16,17 @@ cur = connection.cursor()
 @app.route('/test_flask', methods=['GET'])
 def test_flask():
     result_array = []
+    keys = ['JAVA','CLOUD_NATIVE','DEVOPS','LOW_CODE']
     query_all = """select * from devops"""
     cur.execute(query_all)
     result = cur.fetchall()
     for i in result:
-        dict_object = {'key':None}
-        dict_object['key']=i
-        result_array.append(dict_object)
-        print i
+        temp_dict={}
+        for k,j in zip(i,keys):
+            temp_dict[j]=k
+        result_array.append(temp_dict)
 
-    return json.dumps(dict_object)
+    return json.dumps(result_array)
 
 @app.route('/', methods=['GET'])
 def home():
